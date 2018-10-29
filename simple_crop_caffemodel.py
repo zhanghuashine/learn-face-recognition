@@ -9,9 +9,10 @@ caffe_model = './output/weights.caffemodel'
 def init_caffe(mode='CPU', device_id=0):
     if 'GPU' == mode or 'gpu' == mode:
         caffe.set_mode_gpu()
+        caffe.set_device(device_id)
     else:
         caffe.set_mode_cpu()
-    caffe.set_device(device_id)
+    
 
 def crop_caffemodel(net_file, caffe_model):
     net = caffe.Net(net_file, caffe_model, caffe.TEST)
